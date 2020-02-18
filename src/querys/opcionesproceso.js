@@ -1,0 +1,1 @@
+module.exports.consultarOpcPrc = "SELECT idN, nombre, valor FROM bstntrn.spcpagtopcprc;";
