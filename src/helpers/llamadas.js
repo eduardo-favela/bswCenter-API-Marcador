@@ -11,9 +11,9 @@ module.exports.getAllColas = async(datos) => {
 
 module.exports.trasnferirLlamada = async(datos) => {
     let archivo = "/var/www/html/llamadaEscucha";
-    let extesionEscucha = datos.extesionEscucha;
-    let extesionAgente = datos.extesionAgente;
-    let contexto = datos.contexto;
+    const extensionEscucha = datos.extesionEscucha;
+    const extensionAgente = datos.extesionAgente;
+    const contexto = datos.contexto;
     /* if (archivo == false) {
         return "Error al crear el archivo";
     } else {
@@ -58,8 +58,8 @@ module.exports.trasnferirLlamada = async(datos) => {
             Extension:555
             Account:
             Priority:1
-            Set:SPYNUM=${extensionAgente}
-            Context:contexto`,
+            Set:SPYNUM=${extesionAgente}
+            Context:${contexto}`,
                 (err) => {
                     if (err) throw err;
                     console.log('The file has been saved!');
