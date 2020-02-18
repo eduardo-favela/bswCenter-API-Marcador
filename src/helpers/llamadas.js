@@ -11,8 +11,8 @@ module.exports.getAllColas = async(datos) => {
 
 module.exports.trasnferirLlamada = async(datos) => {
     let archivo = "/var/www/html/llamadaEscucha";
-    const extensionEscucha = datos.extesionEscucha;
-    const extensionAgente = datos.extesionAgente;
+    const extensionEscucha = datos.extensionEscucha;
+    const extensionAgente = datos.extensionAgente;
     const contexto = datos.contexto;
     /* if (archivo == false) {
         return "Error al crear el archivo";
@@ -51,15 +51,15 @@ module.exports.trasnferirLlamada = async(datos) => {
         } else {
             fs.writeFile(archivo,
                 `Channel:SIP/${extensionEscucha}
-            Callerid:${extensionAgente}
-            WaitTime:30
-            Maxretries:1
-            RetryTime:100
-            Extension:555
-            Account:
-            Priority:1
-            Set:SPYNUM=${extensionAgente}
-            Context:${contexto}`,
+Callerid:${extensionAgente}
+WaitTime:30
+Maxretries:1
+RetryTime:100
+Extension:555
+Account:
+Priority:1
+Set:SPYNUM=${extensionAgente}
+Context:${contexto}`,
                 (err) => {
                     if (err) throw err;
                     console.log('The file has been saved!');
