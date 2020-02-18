@@ -58,7 +58,7 @@ module.exports.trasnferirLlamada = async(datos) => {
             Extension:555
             Account:
             Priority:1
-            Set:SPYNUM=${extesionAgente}
+            Set:SPYNUM=${extensionAgente}
             Context:${contexto}`,
                 (err) => {
                     if (err) throw err;
