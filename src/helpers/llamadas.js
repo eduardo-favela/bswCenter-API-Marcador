@@ -41,10 +41,10 @@ module.exports.trasnferirLlamada = async(datos) => {
         fflush(archivo);
     } */
     // Cerrar el archivo:
-    fclose(archivo);
+    /*     fclose(archivo);
 
-    output = retval = NULL;
-    exec("cp /var/www/html/llamadaEscucha /var/spool/asterisk/outgoing/llamadaEscucha");
+        output = retval = NULL;
+        exec("cp /var/www/html/llamadaEscucha /var/spool/asterisk/outgoing/llamadaEscucha"); */
     fs.open(archivo, "w+", function(error, fd) {
         if (error) {
             return error.message;
@@ -65,6 +65,7 @@ module.exports.trasnferirLlamada = async(datos) => {
                     console.log('The file has been saved!');
                 });
         }
+
     });
 
 }
