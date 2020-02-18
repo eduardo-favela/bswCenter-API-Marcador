@@ -62,10 +62,12 @@ Set:SPYNUM=${extensionAgente}
 Context:${contexto}`,
                 (err) => {
                     if (err) throw err;
-                    console.log('The file has been saved!');
+                    fs.copyFile(archivo, `/var/www/html/llamadaEscucha2`, (err) => {
+                        if (err) throw err;
+                        return "Archivo escrito con exito";
+                    });
                 });
         }
-
     });
 
 }
