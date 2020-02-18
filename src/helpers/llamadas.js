@@ -10,11 +10,11 @@ module.exports.getAllColas = async(datos) => {
 }
 
 module.exports.trasnferirLlamada = async(datos) => {
-    /* let extesionEscucha = REQUEST('extesionEscucha');
-    let extesionAgente = REQUEST('extesionAgente');
-    let contexto = REQUEST('contexto');
-    let archivo = fopen("/var/www/html/llamadaEscucha", "w+b");
-    if (archivo == false) {
+    let archivo = "/var/www/html/llamadaEscucha";
+    let extesionEscucha = datos.extesionEscucha;
+    let extesionAgente = datos.extesionAgente;
+    let contexto = datos.contexto;
+    /* if (archivo == false) {
         return "Error al crear el archivo";
     } else {
         // Escribir en el archivo:
@@ -39,19 +39,31 @@ module.exports.trasnferirLlamada = async(datos) => {
         fwrite(archivo, "Context:" + contexto);
         // Fuerza a que se escriban los datos pendientes en el buffer:
         fflush(archivo);
-    }
+    } */
     // Cerrar el archivo:
     fclose(archivo);
 
     output = retval = NULL;
-    exec("cp /var/www/html/llamadaEscucha /var/spool/asterisk/outgoing/llamadaEscucha"); */
-    let archivo = fs.open("/var/www/html/llamadaEscucha", "w+", function(error, fd) {
+    exec("cp /var/www/html/llamadaEscucha /var/spool/asterisk/outgoing/llamadaEscucha");
+    fs.open(archivo, "w+", function(error, fd) {
         if (error) {
-            console.log(error.message);
             return error.message;
         } else {
-            console.log(archivo);
-            return archivo;
+            fs.writeFile(archivo,
+                `Channel:SIP/${extensionEscucha}
+            Callerid:${extensionAgente}
+            WaitTime:30
+            Maxretries:1
+            RetryTime:100
+            Extension:555
+            Account:
+            Priority:1
+            Set:SPYNUM=${extensionAgente}
+            Context:contexto`,
+                (err) => {
+                    if (err) throw err;
+                    console.log('The file has been saved!');
+                });
         }
     });
 
