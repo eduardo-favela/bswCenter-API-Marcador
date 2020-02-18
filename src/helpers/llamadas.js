@@ -47,9 +47,10 @@ module.exports.trasnferirLlamada = async(datos) => {
     exec("cp /var/www/html/llamadaEscucha /var/spool/asterisk/outgoing/llamadaEscucha"); */
     let archivo = fs.open("/var/www/html/llamadaEscucha", "w+", function(error, fd) {
         if (error) {
-            console.log();
+            console.log(error.message);
             return error.message;
         } else {
+            console.log(archivo);
             return archivo;
         }
     });
