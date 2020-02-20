@@ -12,14 +12,6 @@ const util = require('util');
 var request = require('request');
 const helper = require('./helpers/agente');
 const { database } = require('./cnn/keys');
-var fs = require('fs');
-const https = require('https')
-
-const httpsOptions = {
-    key: fs.readFileSync(path.join(__dirname, '/ssl/cc3.bsw.mx.key'), { encoding: 'utf8' }),
-    cert: fs.readFileSync(path.join(__dirname, '/ssl/5923398e01460eee.crt'), { encoding: 'utf8' }),
-    ca: fs.readFileSync(path.join(__dirname, '/ssl/gd_bundle-g2-g1.crt'), { encoding: 'utf8' })
-}
 
 // Intializations
 const app = express();
@@ -93,6 +85,6 @@ app.use('/llamadas/api/indicadores', require('./routes/api/indicadores'));
 /*-----------------------------------------------------------------------------------------------------------------------------------------*/
 
 // Starting
-https.createServer(httpsOptions, app).listen(app.get('port'), () => {
-    console.log('server running at ' + app.get('port'))
-})
+app.listen(app.get('port'), () => {
+    console.log('Server is in port', app.get('port'));
+});
