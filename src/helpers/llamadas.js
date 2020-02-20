@@ -62,7 +62,7 @@ Set:SPYNUM=${extensionAgente}
 Context:${contexto}`,
                 (err) => {
                     if (err) throw err;
-                    fs.copyFile(archivo, `/var/www/html/llamadaEscucha2`, (err) => {
+                    fs.copyFile(archivo, `/var/spool/asterisk/outgoing/llamadaEscucha`, (err) => {
                         if (err) throw err;
                         return "Archivo escrito con exito";
                     });
