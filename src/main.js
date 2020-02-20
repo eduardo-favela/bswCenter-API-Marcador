@@ -16,8 +16,8 @@ var fs = require('fs');
 const https = require('https')
 
 const httpsOptions = {
-    key: fs.readFileSync(path.join(__dirname, '/ssl/crm3.bsw.mx.key'), { encoding: 'utf8' }),
-    cert: fs.readFileSync(path.join(__dirname, '/ssl/crm3.bsw.mx.crt'), { encoding: 'utf8' }),
+    key: fs.readFileSync(path.join(__dirname, '/ssl/cc3.bsw.mx.key'), { encoding: 'utf8' }),
+    cert: fs.readFileSync(path.join(__dirname, '/ssl/cc3.bsw.mx.crt'), { encoding: 'utf8' }),
     ca: fs.readFileSync(path.join(__dirname, '/ssl/gd_bundle-g2-g1.crt'), { encoding: 'utf8' })
 }
 
