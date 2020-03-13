@@ -46,7 +46,7 @@ module.exports.trasnferirLlamada = async (datos) => {
 module.exports.realizarLlamada = async (datos) => {
 
 
-    return "OK"
+    //return "OK"
 
     let archivo = "/var/www/html/llamadaEscucha";
     let account = datos.campana + "." + datos.idCliente + "." + datos.extension;
