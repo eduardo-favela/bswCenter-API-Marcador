@@ -25,4 +25,12 @@ router.post('/trasnferirLlamada', async(req, res) => {
     res.json(transferir);
 });
 
+
+
+router.post('/realizarLlamada', async(req, res) => {
+    let realizarLlamada = await helper.realizarLlamada(req.body);
+    res.json(realizarLlamada);
+});
+
+
 module.exports = router;
