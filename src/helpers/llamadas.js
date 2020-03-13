@@ -82,6 +82,7 @@ module.exports.realizarLlamada = async (datos) => {
         return leerFile.error.message;
     }else {
         let escribirFile = await fs.writeFile(archivo, infoArchivo);
+        console.log(escribirFile)
         if (escribirFile.error) {
             return escribirFile.error.message;
         } else {
