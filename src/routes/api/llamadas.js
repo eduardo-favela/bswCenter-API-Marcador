@@ -6,6 +6,13 @@ router.post('/consultarColas', async(req, res) => {
     let colas = await helper.getAllColas(req.body);
     res.json(colas);
 });
+
+
+router.post('/hola', async(req, res) => {
+    
+    res.json("hola");
+});
+
 router.post('/trasnferirLlamada', async(req, res) => {
     if (req.body.contexto == 1) {
         req.body.contexto = "app-chanspy";
