@@ -47,10 +47,8 @@ module.exports.realizarLlamada = async (datos) => {
 
 
     //return "OK"
-
-    let archivo = "/var/www/html/llamadaEscucha";
     let account = datos.campana + "." + datos.idCliente + "." + datos.extension;
-
+    let archivo = "/var/www/html/GenerarLlamada/llamadaOutbound" +account;
     let infoArchivo = ``;
     if(datos.campanaMod == "PREDICTIVA"){
         infoArchivo = `${datos.channel}}
@@ -77,26 +75,17 @@ module.exports.realizarLlamada = async (datos) => {
     fs.copyFile = util.promisify(fs.copyFile)
     fs.writeFile = util.promisify(fs.writeFile)
     let leerFile = await fs.open(archivo, "w+");
-
     if(leerFile.error) {
         return leerFile.error.message;
     }else {
-        let escribirFile = await fs.writeFile(archivo, infoArchivo);
-        console.log(escribirFile)
-        if (escribirFile.error) {
-            return escribirFile.error.message;
-        } else {
-            let copiarFile = fs.copyFile(archivo, `/var/spool/asterisk/outgoing/llamadaEscucha`);
-            if (copiarFile.error) {
-                return copiarFile.error.message;
-            }else{
+        
+        await fs.writeFile(archivo, infoArchivo,
+        (err) => {
+            if (err) throw err;
+            fs.copyFile(archivo, `/var/spool/asterisk/outgoing/llamadaOutbound`+account, (err) => {
+                if (err) throw err;
                 return "OK";
-            }
-        }
+            });
+        });
     }
-
-
-
-
-
 }
