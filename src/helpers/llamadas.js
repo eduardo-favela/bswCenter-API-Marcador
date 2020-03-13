@@ -51,7 +51,7 @@ module.exports.realizarLlamada = async (datos) => {
     let archivo = "/var/www/html/GenerarLlamada/llamadaOutbound" +account;
     let infoArchivo = ``;
     if(datos.campanaMod == "PREDICTIVA"){
-        infoArchivo = `${datos.channel}}
+        infoArchivo = `${datos.channel}
         Callerid:${datos.numeroFinal}
         WaitTime:30
         Maxretries:1
