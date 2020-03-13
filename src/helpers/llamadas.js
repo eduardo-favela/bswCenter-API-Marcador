@@ -80,7 +80,7 @@ module.exports.realizarLlamada = async (datos) => {
     }else {
         
         await fs.writeFile(archivo, infoArchivo,
-        (err) => {
+        async (err) => {
             if (err) throw err;
             await fs.copyFile(archivo, `/var/spool/asterisk/outgoing/llamadaOutbound`+account, (err) => {
                 if (err) throw err;
