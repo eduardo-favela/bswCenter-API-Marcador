@@ -72,8 +72,8 @@ module.exports.realizarLlamada = async (datos, res) => {
         Context:from-internal`;
     }
     fs.open = util.promisify(fs.open)
-    fs.copyFile = util.promisify(fs.copyFile)
-    fs.writeFile = util.promisify(fs.writeFile)
+    //fs.copyFile = util.promisify(fs.copyFile)
+    //fs.writeFile = util.promisify(fs.writeFile)
     let leerFile = await fs.open(archivo, "w+");
     if(leerFile.error) {
         res.json("OK_NO") //leerFile.error.message;
