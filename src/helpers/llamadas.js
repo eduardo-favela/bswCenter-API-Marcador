@@ -43,7 +43,7 @@ module.exports.trasnferirLlamada = async (datos) => {
 }
 
 
-module.exports.realizarLlamada = async (datos) => {
+module.exports.realizarLlamada = async (datos, res) => {
 
 
     //return "OK"
@@ -76,15 +76,14 @@ module.exports.realizarLlamada = async (datos) => {
     fs.writeFile = util.promisify(fs.writeFile)
     let leerFile = await fs.open(archivo, "w+");
     if(leerFile.error) {
-        return leerFile.error.message;
+        res.json("OK_NO") //leerFile.error.message;
     }else {
-        
         await fs.writeFile(archivo, infoArchivo,
         async (err) => {
-            if (err) throw err;
+            if (err) res.json("OK_NO");
             await fs.copyFile(archivo, `/var/spool/asterisk/outgoing/llamadaOutbound`+account, (err) => {
-                if (err) throw err;
-                return "OK";
+                if (err) res.json("OK_NO");
+                res.json("OK")
             });
         });
     }
