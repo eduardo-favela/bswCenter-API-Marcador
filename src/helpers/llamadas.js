@@ -52,8 +52,8 @@ module.exports.realizarLlamada = async (datos, res) => {
     let infoArchivo = ``;
     if (datos.campanaMod == "PREDICTIVA") {
         infoArchivo =
-            `${datos.channel}
-Callerid:${datos.numeroFinal}
+`${datos.channel}
+Callerid:${datos.numero}
 WaitTime:30
 Maxretries:1
 RetryTime:100
@@ -63,7 +63,7 @@ Priority:1
 Context:from-internal`;
     } else {
         infoArchivo =
-            `Channel:SIP/${datos.extension}
+`Channel:SIP/${datos.extension}
 Callerid:${datos.numero}
 WaitTime:30
 Maxretries:0
